@@ -1,0 +1,24 @@
+{
+    "name": "grobmeier/invoice-checker",
+    "description": "Checks your inbox for invoices and downloads it",
+    "type": "project",
+    "license": "Apache License 2.0",
+    "authors": [
+        {
+            "name": "Christian Grobmeier",
+            "email": "cg@grobmeier.de"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Grobmeier\\InvoiceChecker\\": "src/"
+        }
+    },
+    "require": {
+        "ext-imap": "*",
+
+        "symfony/console": "^3.2",
+        "ddeboer/imap": "^0.5.2",
+        "symfony/yaml": "^3.2"
+    }
+}

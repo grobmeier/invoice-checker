@@ -1,0 +1,17 @@
+username: <your username>
+password: <your password>
+host: <your imap host>
+port: 993
+
+# The folder in which you want to search for downloadable invoices
+search_folder: INBOX
+
+# The folder in which the processed invoices should be moved
+done_folder: INVOICES-DONE
+
+# Rules to search for. In this example, we search for a specific subject and move the invoice to the specified folder.
+# ${month}, ${year}, ${day} will be replaced with the message date.
+rules:
+  - name: GitHub
+    subject: "[GitHub] Payment Receipt for grobmeier"
+    invoice_folder: "/Users/grobmeier/invoices/paypal/${year}/${month}/"
