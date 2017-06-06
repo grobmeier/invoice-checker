@@ -2,6 +2,7 @@
 
 namespace Grobmeier\InvoiceChecker;
 
+use Ddeboer\Imap\Search\Email\FromAddress;
 use Ddeboer\Imap\Search\Text\Subject;
 use Ddeboer\Imap\SearchExpression;
 use Ddeboer\Imap\Server;
@@ -41,11 +42,17 @@ class Checker extends Command
 
         $doneMailbox = $connection->getMailbox($config['done_folder']);
 
-
         foreach ($config['rules'] as $rule) {
             print_r($rule);
             $search = new SearchExpression();
-            $search->addCondition(new Subject($rule['subject']));
+
+            if (isset($rule['subject'])) {
+                $search->addCondition(new Subject($rule['subject']));    
+            }
+            
+            if (isset($rule['from'])) {
+                $search->addCondition(new FromAddress($rule['from']));    
+            }
 
             $messages = $mailbox->getMessages($search);
 
