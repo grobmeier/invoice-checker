@@ -58,7 +58,7 @@ class Checker extends Command
 
             if (sizeof($messages) > 0) {
                 foreach ($messages as $message) {
-                    print_r("Found invoice/receipt: " . $rule['name']);
+                    print_r("Found invoice/receipt: " . $rule['name'] . PHP_EOL);
                     $date = $message->getDate();
                     $year = $date->format('Y');
                     $month = $date->format('m');
@@ -75,6 +75,7 @@ class Checker extends Command
                         $attachments[0]->getDecodedContent()
                     );
 
+                    print_r("Invoice moved to: " . $target . PHP_EOL);
                     $message->move($doneMailbox);
                 }
             }
